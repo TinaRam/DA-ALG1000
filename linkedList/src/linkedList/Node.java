@@ -3,47 +3,41 @@ package linkedList;
 /**
  * @author tinarambo
  *
- * A generic Node class to make it reusable
- * @param <D> The Node's data
  */
-public class Node<D> {
+public class Node {
 
-	private D data;
-	private Node<D> next; // self-referential defined class: field of same type as it self
+	private int data;
+	private Node next; // self-referential defined class: field of same type as it self
 	// A reference is a number that refers to an object.
 	// It’s the object’s address in the computer’s memory
-
-	public Node() {
-		this(null);
-	}
 
 	/**
 	 * Creates a Node with data and next = null
 	 * @param data
 	 */
-	public Node(D data) {
+	public Node(int data) {
 		this.data = data;
 		this.next = null;
 	}
 
-	public Node(D data, Node<D> next) {
+	public Node(int data, Node next) {
 		this.data = data;
 		this.next = next;
 	}
 
-	public void setNext(Node<D> next) {
+	public void setNext(Node next) {
 		this.next = next;
 	}
 
-	public Node<D> getNext() {
+	public Node getNext() {
 		return this.next;
 	}
 
-	public D getData() {
+	public int getData() {
 		return this.data;
 	}
 
-	public void setData(D data) {
+	public void setData(int data) {
 		this.data = data;
 	}
 }

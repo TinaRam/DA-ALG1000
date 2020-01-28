@@ -4,9 +4,9 @@ package linkedList;
  * @author tinarambo
  *
  */
-public class LinkedList<D> {
+public class LinkedList {
 
-	private Node<D> head;
+	private Node head;
 
 	// Ha en tail som tar vare på siste node i listen?
 	// private Node head,tail;
