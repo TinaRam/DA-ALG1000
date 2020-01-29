@@ -13,7 +13,7 @@ public class Menu {
 
 	private void printMenuItems() {
 		System.out.println("------------------------------------------------------------------");
-		System.out.println("       Simlple Linked List                                        ");
+		System.out.println("     Simlple Linked List MENU                                     ");
 		System.out.println("------------------------------------------------------------------");
 		System.out.println("                                                                  ");
 		System.out.println("  1: Slett element først i listen                                 ");
@@ -60,7 +60,7 @@ public class Menu {
 			} // 2: Legg til element i slutten av listen
 			else if (menuItem == 2) {
 
-				list.addLast();
+				list.addLast(in.readInt("Tast inn verdi på ny node: "));
 
 			} // 3: Slett et element i slutten av listen
 			else if (menuItem == 3) {
@@ -74,8 +74,9 @@ public class Menu {
 
 			} // 5: Legg til et element etter et element med oppgitt verdi
 			else if (menuItem == 5) {
-
-				list.addAfter(in.readInt("Tast inn verdien elementet skal legges etter: "));
+				int valueNewNode = in.readInt("Tast inn verdien til ny node: ");
+				int data = in.readInt("Tast inn verdien den nye noden skal legge etter: ");
+				list.addAfter(data, valueNewNode);
 
 			} // 6: Legg til et element foran et element med oppgitt verdi
 			else if (menuItem == 6) {
