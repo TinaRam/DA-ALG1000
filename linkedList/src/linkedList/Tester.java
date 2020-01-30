@@ -1,7 +1,5 @@
 package linkedList;
 
-import java.util.Random;
-
 /**
  * @author tinarambo
  * 
@@ -20,28 +18,58 @@ public class Tester {
 		LinkedList list = new LinkedList(); // instansierer listen. Inneholder kun head = null
 
 		// Test: isEmpty()
-		test(list.isEmpty(), true, "om liste er tom");
+		// test(list.isEmpty(), true, "om liste er tom");
+		// System.out.println();
 
-		System.out.println();
-		Random random = new Random();
-		for (int i = 0; i < 5; i++) {
-			list.addFirst(random.nextInt(8));
-			list.printList();
+		//		Random random = new Random();
+		//		for (int i = 0; i < 5; i++) {
+		//			list.addToFront(random.nextInt(9) + 1);
+		//		}
+		//		System.out.println("Instansiert liste med 5 elementer");
+		//		list.printList();
+
+		// list.removeFromFront();
+		// list.printList();
+
+		list.addToBack(3);
+		list.addToBack(7);
+		list.addToBack(1);
+		//		System.out.println("Instansiert liste med 11 elementer");
+		//		System.out.println("Antall noder med niere: " + list.countNodesWithValue(9));
+		list.printList();
+
+		list.addBeforeValue(1, 0);
+		list.printList();
+
+		list.addBeforeValue(3, 0);
+		list.printList();
+		list.addBeforeValue(30, 99);
+		list.printList();
+
+		list.deleteList();
+		list.printList();
+
+		for (int i = 0; i < 10; i++) {
+			list.addToBack(10);
 		}
-
-		list.removeFirst();
+		System.out.println("Antall noder: " + list.getListLength());
 		list.printList();
 
-		list.addLast(9);
-		list.addLast(3);
-		list.addFirst(8);
-		list.printList();
+		//		list.addAfterValue(3, 100);
+		//		System.out.println("Legg til 100 etter verdien 3:");
+		//		list.printList();
 
-		System.out.print("Antall noder med verdien 9: ");
-		System.out.println(list.countNodesWith(9));
+		//		System.out.println("Slett node med verdien 9:");
+		//		list.removeNodeWithValue(9);
+		//		list.printList();
 
-		list.addAfter(9, 100);
-		list.printList();
+		//		System.out.println("Slett noder med verdien 3:");
+		//		list.removeNodeWithValue(3);
+		//		list.printList();
+
+		// System.out.println("Slett bakerste node:");
+		// list.removeFromBack();
+		// list.printList();
 	}
 
 	/**
@@ -52,9 +80,11 @@ public class Tester {
 	 */
 	public static void test(boolean test, boolean expected, String message) {
 		if (test == expected) {
-			System.out.printf("Tester %s: %b   OK!\n", message, expected);
+			// System.out.printf("Tester %s: %b OK!\n", message, expected);
+			// System.out.println();
 		} else {
-			System.out.printf("Tester %s: F#*k...! Forventet %b, fikk %b\n", message, expected, test);
+			System.out.printf("Tester %s: F#*k...! Forventet %b, fikk %b. TEST FAILED!\n", message, expected, test);
+			System.out.println();
 		}
 	}
 }

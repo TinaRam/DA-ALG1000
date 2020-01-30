@@ -6,10 +6,13 @@ package linkedList;
  */
 public class Node {
 
+	/**
+	 * Self-referential defined class: field of same type as it self.
+	 * A reference is a number that refers to an object.
+	 * Contains the object’s address in the computer’s memory
+	 */
+	public Node next;
 	public int data;
-	public Node next; // self-referential defined class: field of same type as it self
-	// A reference is a number that refers to an object.
-	// It’s the object’s address in the computer’s memory
 
 	public Node() {
 		this.next = null;
@@ -24,6 +27,11 @@ public class Node {
 		this.next = null;
 	}
 
+	/**
+	 * Creates a Node with data and pointer to next node
+	 * @param data
+	 * @param next
+	 */
 	public Node(int data, Node next) {
 		this.data = data;
 		this.next = next;

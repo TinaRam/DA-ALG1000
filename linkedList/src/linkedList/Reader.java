@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 /**
  * @author tinarambo
  *
+ * Read user input
  */
 
 public class Reader {
@@ -20,11 +21,15 @@ public class Reader {
 			try {
 				return Integer.valueOf(b.readLine().trim()).intValue();
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("Ugyldig input! Vennligst tast inn et tall.\n");
 			}
 		}
 	}
 
+	/**
+	 * @param message Print a text to guide user
+	 * @return int from user input
+	 */
 	public int readInt(String message) {
 		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
