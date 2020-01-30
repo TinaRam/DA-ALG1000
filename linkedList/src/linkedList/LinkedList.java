@@ -4,9 +4,9 @@ package linkedList;
  * @author tinarambo
  *
  */
-public class LinkedList {
+public class LinkedList<D> {
 
-	public Node head;
+	private Node<D> head;
 
 	/**
 	 * @return true if list is empty

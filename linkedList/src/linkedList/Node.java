@@ -4,59 +4,47 @@ package linkedList;
  * @author tinarambo
  *
  */
-public class Node {
+public class Node<D> {
 
 	/**
 	 * Self-referential defined class: field of same type as it self.
 	 * A reference is a number that refers to an object.
 	 * Contains the object’s address in the computer’s memory
 	 */
-	public Node next;
-	public int data;
+	private Node<D> next;
+	private D data;
 
 	public Node() {
-		this.next = null;
+		this(null);
 	}
 
 	/**
 	 * Creates a Node with data and next = null
 	 * @param data
 	 */
-	public Node(int data) {
+	public Node(D data) {
 		this.data = data;
 		this.next = null;
 	}
 
-	/**
-	 * Creates a Node with data and pointer to next node
-	 * @param data
-	 * @param next
-	 */
-	public Node(int data, Node next) {
+	public Node(D data, Node<D> next) {
 		this.data = data;
 		this.next = next;
 	}
 
-	public void printValue() {
-		System.out.print(" [ " + data + " ] ");
+	public void setNext(Node<D> next) {
+		this.next = next;
 	}
 
-	// Gjorde Node public for å kunne følge forelesnings-filene
-	// Gjør om senere!
+	public Node<D> getNext() {
+		return this.next;
+	}
 
-	// public void setNext(Node next) {
-	// this.next = next;
-	// }
-	//
-	// public Node getNext() {
-	// return this.next;
-	// }
-	//
-	// public int getData() {
-	// return this.data;
-	// }
-	//
-	// public void setData(int data) {
-	// this.data = data;
-	// }
+	public D getData() {
+		return this.data;
+	}
+
+	public void setData(D data) {
+		this.data = data;
+	}
 }
