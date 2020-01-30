@@ -6,7 +6,12 @@ package linkedList;
  */
 public class LinkedList<D> {
 
-	private Node<D> head;
+	protected Node<D> head, tail;
+
+	public LinkedList() {
+		head = null;
+		tail = null;
+	}
 
 	/**
 	 * @return true if list is empty
@@ -22,9 +27,9 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			return false;
 		}
-		Node current = head;
+		Node<D> current = head;
 		while (current != null) {
-			if (current.data == value) {
+			if (current.getData() == value) {
 				return true;
 			}
 			current = current.next;
@@ -33,7 +38,7 @@ public class LinkedList<D> {
 	}
 
 	public void addToFront(int data) {
-		Node newNode = new Node(); // Henter node fra systemet. Data og next = NULL
+		Node<D> newNode = new Node<D>(); // Henter node fra systemet. Data og next = NULL
 		newNode.data = data; // Fyller den med data
 		newNode.next = head; // Justerer peker til å peke på den første noden i listen
 		head = newNode; // Deklarerer ny node som head
@@ -55,11 +60,11 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			addToFront(data);
 		} else {
-			Node current = head; // Lager en node som peker på samme som head
+			Node<D> current = head; // Lager en node som peker på samme som head
 			while (current.next != null) { // så lenge current ikke er siste elementet i listen
 				current = current.next; // flytter oss til neste node i listen
 			} // etter while vil current være det siste elementet i listen
-			Node newNode = new Node(); // Henter node fra systemet
+			Node<D> newNode = new Node<D>(); // Henter node fra systemet
 			newNode.data = data; // Fyller den med data (peker = null)
 			current.next = newNode; // Justerer nåværende siste element i lista til å peke på ny node
 		}
@@ -70,8 +75,8 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			System.out.println("Det er ingen elementer i listen...\n");
 		} else {
-			Node current = head;
-			Node prev = current;
+			Node<D> current = head;
+			Node<D> prev = current;
 			while (current.next != null) {
 				prev = current;
 				current = current.next;
@@ -89,8 +94,8 @@ public class LinkedList<D> {
 		} else if (!isValueInList(value)) {
 			System.out.println("Det er ingen elementer i listen med verdien " + value + "\n");
 		} else {
-			Node current = head;
-			Node prev = null;
+			Node<D> current = head;
+			Node<D> prev = null;
 			while (current != null) {
 				if (current.data == value) {
 					if (prev == null) { // hvis verdi er første node i listen
@@ -115,10 +120,10 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			System.out.println("Det er ingen elementer i listen...\n");
 		} else {
-			Node current = head;
+			Node<D> current = head;
 			while (current != null) {
 				if (current.data == data) {
-					Node newNode = new Node();
+					Node<D> newNode = new Node();
 					newNode.data = value;
 					newNode.next = current.next;
 					current.next = newNode;
@@ -135,15 +140,15 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			System.out.println("Det er ingen elementer i listen...\n");
 		} else {
-			Node current = head;
-			Node prev = null;
+			Node<D> current = head;
+			Node<D> prev = null;
 			while (current != null) {
 				if (current.data == value) {
 					if (prev == null) { // om verdien er første element i lista
 						addToFront(data);
 						return;
 					} else {
-						Node newNode = new Node();
+						Node<D> newNode = new Node<D>();
 						newNode.data = data;
 						prev.next = newNode;
 						newNode.next = current;
@@ -163,7 +168,7 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			return length;
 		} else {
-			Node current = head;
+			Node<D> current = head;
 			while (current != null) {
 				current = current.next;
 				length++;
@@ -178,7 +183,7 @@ public class LinkedList<D> {
 		if (isEmpty()) {
 			return c;
 		} else {
-			Node current = head;
+			Node<D> current = head;
 			while (current != null) {
 				if (current.data == value) {
 					c++;
@@ -195,7 +200,7 @@ public class LinkedList<D> {
 			System.out.println("Det er ingen elementer i listen...\n");
 		} else {
 			System.out.print("head -->");
-			Node current = head;
+			Node<D> current = head;
 			while (current != null) {
 				current.printValue();
 				if (current.next != null) {
