@@ -71,13 +71,17 @@ public class LinkedList {
 			System.out.println("Det er ingen elementer i listen...\n");
 		} else {
 			Node current = head;
-			Node prev = current;
+			Node prev = head;
 			while (current.next != null) {
 				prev = current;
 				current = current.next;
 			}
 			int deletedNode = current.data;
-			prev.next = null;
+			if (prev == head) {
+				head = head.next;
+			} else {
+				prev.next = null;
+			}
 			System.out.println("Sletting vellykket! Node [ " + deletedNode + " ] er nå slettet.\n");
 		}
 	}
