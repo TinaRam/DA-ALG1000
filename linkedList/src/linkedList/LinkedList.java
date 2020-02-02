@@ -114,6 +114,7 @@ public class LinkedList {
 		}
 	}
 
+	// TODO: Om det kun er et element i listen så kan man ikke legge noe etter. "Det finnes ingen elementer med verdien i listen."
 	// 5: Legg til et element etter et element med oppgitt verdi
 	public void addAfterValue(int value, int data) {
 		if (isEmpty()) {
