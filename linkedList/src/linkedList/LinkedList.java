@@ -37,38 +37,46 @@ public class LinkedList {
 		newNode.data = data; // Fyller den med data
 		newNode.next = head; // Justerer peker til å peke på den første noden i listen
 		head = newNode; // Deklarerer ny node som head
+
+		System.out.println(data + " lagt først i lista.");
+		printList();
 	}
 
 	// 1: Slett element først i listen
 	public void removeFromFront() {
 		if (isEmpty()) {
-			System.out.println("Det er ingen elementer i listen...\n");
+			System.out.println("Lista er tom...\n");
 		} else {
 			int deletedNode = head.data;
 			head = head.next;
 			System.out.println("Sletting vellykket! Node [ " + deletedNode + " ] er nå slettet.\n");
+
+			printList();
 		}
 	}
 
 	// 2: Legg til element i slutten av listen
-	public void addToBack(int data) {
+	public void addToBack(int value) {
 		if (isEmpty()) {
-			addToFront(data);
+			addToFront(value);
 		} else {
-			Node current = head; // Lager en node som peker på samme som head
-			while (current.next != null) { // så lenge current ikke er siste elementet i listen
-				current = current.next; // flytter oss til neste node i listen
-			} // etter while vil current være det siste elementet i listen
+			Node last = head; // Lager en node som peker på samme som head
+			while (last.next != null) { // om ikke last er siste elementet i lista
+				last = last.next; // flytter last til neste node
+			}
 			Node newNode = new Node(); // Henter node fra systemet
-			newNode.data = data; // Fyller den med data (peker = null)
-			current.next = newNode; // Justerer nåværende siste element i lista til å peke på ny node
+			newNode.data = value; // Fyller den med data (peker = null)
+			last.next = newNode; // Justerer siste elements peker til å peke på ny node
+
+			System.out.println(value + " lagt til slutten av lista.");
+			printList();
 		}
 	}
 
 	// 3: Slett et element i slutten av listen
 	public void removeFromBack() {
 		if (isEmpty()) {
-			System.out.println("Det er ingen elementer i listen...\n");
+			System.out.println("Lista er tom...\n");
 		} else {
 			Node current = head;
 			Node prev = head;
@@ -77,89 +85,94 @@ public class LinkedList {
 				current = current.next;
 			}
 			int deletedNode = current.data;
-			if (prev == head) {
-				head = head.next;
+			if (current == head) {
+				head = head.next; // head.next vil være null på dette tidspunktet
 			} else {
-				prev.next = null;
+				prev.next = current.next; // current.next vil være null på dette tidspunktet
 			}
 			System.out.println("Sletting vellykket! Node [ " + deletedNode + " ] er nå slettet.\n");
+
+			printList();
 		}
 	}
 
 	// 4: Slett et element med oppgitt verdi (sletter kun den første verdien den finner)
 	public void removeNodeWithValue(int value) {
 		if (isEmpty()) {
-			System.out.println("Det er ingen elementer i listen...\n");
-		} else if (!isValueInList(value)) {
-			System.out.println("Det er ingen elementer i listen med verdien " + value + "\n");
+			System.out.println("Lista er tom...\n");
 		} else {
 			Node current = head;
-			Node prev = null;
-			while (current != null) {
-				if (current.data == value) {
-					if (prev == null) { // hvis verdi er første node i listen
-						head = head.next;
-						return;
-					} else if (current.next == null) { // hvis verdi er siste node i liste
-						prev.next = null;
-						return;
-					} else {
-						prev.next = current.next;
-						return;
-					}
-				}
-				prev = current;
-				current = current.next;
+			Node prev = head;
+
+			if (current.data == value && current == head) { // Om noden som skal slettes er første noden i listen
+				head = current.next; // Sletter første node
 			}
+
+			while (current != null && current.data != value) { // Om current ikke er tom eller har verdi som skal slettes...
+				prev = current;
+				current = current.next; // Gå til neste node...
+			}
+
+			if (current != null) { // Om current har en verdi etter while-løkka så inneholder den verdien som skal slettes 
+				prev.next = current.next;
+				System.out.println("Node med verdi '" + value + "' ble slettet fra lista!");
+			} else {
+				System.out.println("Ingen node med verdien '" + value + "' i lista!");
+			}
+			printList();
 		}
 	}
 
-	// TODO: Om det kun er et element i listen så kan man ikke legge noe etter. "Det finnes ingen elementer med verdien i listen."
 	// 5: Legg til et element etter et element med oppgitt verdi
-	public void addAfterValue(int value, int data) {
+	public void addAfterValue(int valueExistingNode, int valueNewNode) {
 		if (isEmpty()) {
-			System.out.println("Det er ingen elementer i listen...\n");
+			System.out.println("Lista er tom...\n");
 		} else {
+
 			Node current = head;
-			while (current != null) {
-				if (current.data == data) {
-					Node newNode = new Node();
-					newNode.data = value;
-					newNode.next = current.next;
-					current.next = newNode;
-					return;
-				}
-				current = current.next;
+			while (current != null && current.data != valueExistingNode) { // Så lenge noden ikke er tom eller har oppgitt verdi...
+				current = current.next; // Gå til neste element
 			}
-			System.out.println("Det finnes ingen elementer med verdien " + value + " i listen.\n");
+
+			if (current != null) { // verdi funnet
+				Node newNode = new Node();
+				newNode.data = valueNewNode;
+				newNode.next = current.next; // Juster peker ny node til å peke på current sin neste
+				current.next = newNode; // Juster peker current til å peke på ny node
+			} else {
+				System.out.println("Lista har ingen elementer med verdien '" + valueExistingNode + "'!\n");
+			}
+			printList();
 		}
 	}
 
 	// 6: Legg til et element foran et element med oppgitt verdi
-	public void addBeforeValue(int value, int data) {
+	public void addBeforeValue(int valueExistingNode, int valueNewNode) {
 		if (isEmpty()) {
-			System.out.println("Det er ingen elementer i listen...\n");
+			System.out.println("Lista er tom...\n");
 		} else {
-			Node current = head;
-			Node prev = null;
-			while (current != null) {
-				if (current.data == value) {
-					if (prev == null) { // om verdien er første element i lista
-						addToFront(data);
-						return;
-					} else {
-						Node newNode = new Node();
-						newNode.data = data;
-						prev.next = newNode;
-						newNode.next = current;
-					}
-					return;
+
+			if (head.data == valueExistingNode) {
+				addToFront(valueNewNode);
+			} else {
+				Node current = head;
+				Node prev = null;
+
+				while (current != null && current.data != valueExistingNode) {
+					prev = current;
+					current = current.next;
 				}
-				prev = current;
-				current = current.next;
+
+				if (current != null) {
+					Node newNode = new Node();
+					newNode.data = valueNewNode;
+					prev.next = newNode;
+					newNode.next = current;
+				}
+
 			}
 		}
-		System.out.println("Det finnes ingen elementer med verdien '" + value + "' i listen.\n");
+		System.out.println("Det finnes ingen elementer med verdien '" + valueExistingNode + "' i listen.\n");
 	}
 
 	// 7: Antall elementer i listen
@@ -197,12 +210,12 @@ public class LinkedList {
 	// 9: Skriv ut hele listen
 	public void printList() {
 		if (isEmpty()) {
-			System.out.println("Det er ingen elementer i listen...\n");
+			System.out.println("Lista er tom...\n");
 		} else {
 			System.out.print("head -->");
 			Node current = head;
 			while (current != null) {
-				current.printValue();
+				current.printNodeData();
 				if (current.next != null) {
 					System.out.print("-->");
 				}

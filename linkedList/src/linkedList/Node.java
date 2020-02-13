@@ -20,43 +20,24 @@ public class Node {
 
 	/**
 	 * Creates a Node with data and next = null
-	 * @param data
+	 * @param value
 	 */
-	public Node(int data) {
-		this.data = data;
+	public Node(int value) {
+		this.data = value;
 		this.next = null;
 	}
 
 	/**
 	 * Creates a Node with data and pointer to next node
-	 * @param data
+	 * @param value
 	 * @param next
 	 */
-	public Node(int data, Node next) {
-		this.data = data;
+	public Node(int value, Node next) {
+		this.data = value;
 		this.next = next;
 	}
 
-	public void printValue() {
+	public void printNodeData() {
 		System.out.print(" [ " + data + " ] ");
 	}
-
-	// Gjorde Node public for å kunne følge forelesnings-filene
-	// Gjør om senere!
-
-	// public void setNext(Node next) {
-	// this.next = next;
-	// }
-	//
-	// public Node getNext() {
-	// return this.next;
-	// }
-	//
-	// public int getData() {
-	// return this.data;
-	// }
-	//
-	// public void setData(int data) {
-	// this.data = data;
-	// }
 }

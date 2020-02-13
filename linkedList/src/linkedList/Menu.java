@@ -70,9 +70,9 @@ public class Menu {
 				break;
 			// 5: Legg til et element etter et element med oppgitt verdi
 			case 5:
-				int value = in.readInt("Tast inn verdien den nye noden skal ligge etter: ");
-				int dataNewNode = in.readInt("Tast inn verdien til ny node: ");
-				list.addAfterValue(value, dataNewNode);
+				int dataExistingNode = in.readInt("Tast inn hvilken verdi den nye noden skal plasseres etter: ");
+				int valueNewNode = in.readInt("Tast inn verdien til ny node: ");
+				list.addAfterValue(dataExistingNode, valueNewNode);
 				break;
 			// 6: Legg til et element foran et element med oppgitt verdi
 			case 6:
