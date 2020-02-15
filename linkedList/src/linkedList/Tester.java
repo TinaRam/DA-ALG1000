@@ -14,7 +14,7 @@ public class Tester {
 	 */
 	public static void main(String[] args) {
 
-		// # Tester: LinkedList
+		// # ENDRE TESTKLASSE TIL Å KJØRE ALLE PLANLAGTE TESTER MED UTSKRIFT FOR HVER TEST!
 		LinkedList list = new LinkedList(); // instansierer listen. Inneholder kun head = null
 
 		// Test: isEmpty()
@@ -31,29 +31,28 @@ public class Tester {
 		// list.removeFromFront();
 		// list.printList();
 
-		list.addToBack(3);
-		list.addToBack(7);
-		list.addToBack(1);
+		//		list.addToBack(3);
+		//		list.addToBack(7);
+		//		list.addToBack(1);
 		//		System.out.println("Instansiert liste med 11 elementer");
 		//		System.out.println("Antall noder med niere: " + list.countNodesWithValue(9));
-		list.printList();
-
-		list.addBeforeValue(1, 0);
-		list.printList();
-
-		list.addBeforeValue(3, 0);
-		list.printList();
-		list.addBeforeValue(30, 99);
-		list.printList();
-
-		list.deleteList();
-		list.printList();
-
-		for (int i = 0; i < 10; i++) {
-			list.addToBack(10);
-		}
-		System.out.println("Antall noder: " + list.getListLength());
-		list.printList();
+		//		list.printList();
+		//
+		//		list.addBeforeValue(1, 0);
+		//		list.printList();
+		//
+		//		list.addBeforeValue(3, 0);
+		//		list.printList();
+		//		list.addBeforeValue(30, 99);
+		//		list.printList();
+		//
+		//		list.deleteList();
+		//		list.printList();
+		//
+		//		for (int i = 0; i < 10; i++) {
+		//			list.addToBack(10);
+		//		}
+		//		list.printList();
 
 		//		list.addAfterValue(3, 100);
 		//		System.out.println("Legg til 100 etter verdien 3:");
@@ -69,7 +68,7 @@ public class Tester {
 
 		// System.out.println("Slett bakerste node:");
 		// list.removeFromBack();
-		// list.printList();
+		list.printList();
 	}
 
 	/**

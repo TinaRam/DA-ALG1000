@@ -82,13 +82,15 @@ public class Menu {
 				break;
 			// 7: Skriv ut lengden på listen
 			case 7:
-				System.out.println("Listen har " + list.getListLength() + " elementer.\n");
+				list.printListLength();
 				break;
 			// 8: Skriv ut antall forekomster av elementer med oppgitt verdi
 			case 8:
-				int value1 = in.readInt("Vis antall elementer med verdi: ");
-				System.out.println(
-						"Listen har " + list.countNodesWithValue(value1) + " elementer med verdien " + value1 + ".\n");
+				if (list.isEmpty()) {
+					System.out.println("Lista er tom... \n");
+				} else {
+					list.printInstancesOfValue(in.readInt("Vis antall elementer med verdi: "));
+				}
 				break;
 			// 9: Skriv ut hele listen
 			case 9:

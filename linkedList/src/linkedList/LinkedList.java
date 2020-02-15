@@ -38,7 +38,7 @@ public class LinkedList {
 		newNode.next = head; // Justerer peker til å peke på den første noden i listen
 		head = newNode; // Deklarerer ny node som head
 
-		System.out.println(data + " lagt først i lista.");
+		System.out.println(data + " ble lagt først i lista.");
 		printList();
 	}
 
@@ -166,44 +166,52 @@ public class LinkedList {
 				if (current != null) {
 					Node newNode = new Node();
 					newNode.data = valueNewNode;
-					prev.next = newNode;
 					newNode.next = current;
+					prev.next = newNode;
+					System.out.println(valueNewNode + " ble lagt listen før node " + valueExistingNode + ".\n");
+				} else {
+					System.out.println("Det finnes ingen elementer med verdien '" + valueExistingNode + "' i lista.\n");
 				}
-
+				printList();
 			}
 		}
-		System.out.println("Det finnes ingen elementer med verdien '" + valueExistingNode + "' i listen.\n");
 	}
 
-	// 7: Antall elementer i listen
-	public int getListLength() {
+	// 7: Skriv ut lengden på listen
+	public void printListLength() {
 		int length = 0;
-		if (isEmpty()) {
-			return length;
+		Node current = head;
+		while (current != null) {
+			current = current.next;
+			length++;
+		}
+		if (length == 1) {
+			System.out.println("Det er " + length + " element i lista.\n");
 		} else {
-			Node current = head;
-			while (current != null) {
-				current = current.next;
-				length++;
-			}
-			return length;
+			System.out.println("Det er " + length + " elementer i lista.\n");
 		}
 	}
 
-	// 8: Skriv ut antall forekomster av elementer med oppgitt verdi
-	public int countNodesWithValue(int value) {
+	// Tell antall forekomster elementer med oppgitt verdi
+	public int countInstancesOfValue(int value) {
 		int c = 0;
-		if (isEmpty()) {
-			return c;
-		} else {
-			Node current = head;
-			while (current != null) {
-				if (current.data == value) {
-					c++;
-				}
-				current = current.next;
+		Node current = head;
+		while (current != null) {
+			if (current.data == value) {
+				c++;
 			}
-			return c;
+			current = current.next;
+		}
+		return c;
+	}
+
+	// 8: Skriv ut antall forekomster elementer med oppgitt verdi
+	public void printInstancesOfValue(int value) {
+		int instances = countInstancesOfValue(value);
+		if (instances == 1) {
+			System.out.println("Det er " + instances + " element med verdien '" + value + "'.\n");
+		} else {
+			System.out.println("Listen har " + instances + " elementer med verdien '" + value + "'.\n");
 		}
 	}
 
@@ -221,15 +229,18 @@ public class LinkedList {
 				}
 				current = current.next;
 			}
-			System.out.print("\n\n");
+			System.out.println("~~\n");
 		}
 	}
 
 	// 10: Slett listen og vis antall slettede elementer
 	public void deleteList() {
-		int deletedNodes = getListLength();
-		head = null;
-		System.out.println("Sletting vellykket! " + deletedNodes + " elementer ble slettet.\n");
+		int deletedNodes = 0;
+		while (head != null) {
+			head = head.next;
+			deletedNodes++;
+		}
+		System.out.println("Liste med " + deletedNodes + " elementer slettet.\n");
 	}
 
 }
