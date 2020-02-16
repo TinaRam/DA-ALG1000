@@ -15,72 +15,62 @@ public class Tester {
 	public static void main(String[] args) {
 
 		// # ENDRE TESTKLASSE TIL Å KJØRE ALLE PLANLAGTE TESTER MED UTSKRIFT FOR HVER TEST!
-		LinkedList list = new LinkedList(); // instansierer listen. Inneholder kun head = null
 
-		// Test: isEmpty()
-		// test(list.isEmpty(), true, "om liste er tom");
-		// System.out.println();
+		// 1: Slett element først i listen
+		LinkedList list1 = new LinkedList();
+		System.out.println("1: Slett element først i listen");
+		System.out.println();
 
-		//		Random random = new Random();
-		//		for (int i = 0; i < 5; i++) {
-		//			list.addToFront(random.nextInt(9) + 1);
-		//		}
-		//		System.out.println("Instansiert liste med 5 elementer");
-		//		list.printList();
+		// Tom liste
+		System.out.print("Slett første element fra tom liste --> ");
+		list1.removeFromFront();
+		System.out.println();
 
-		// list.removeFromFront();
-		// list.printList();
+		// Liste med 1 element
+		list1.addToFront(10);
+		System.out.print("Liste med 1 element: ");
+		list1.removeFromFront();
+		System.out.println();
 
-		//		list.addToBack(3);
-		//		list.addToBack(7);
-		//		list.addToBack(1);
-		//		System.out.println("Instansiert liste med 11 elementer");
-		//		System.out.println("Antall noder med niere: " + list.countNodesWithValue(9));
-		//		list.printList();
-		//
-		//		list.addBeforeValue(1, 0);
-		//		list.printList();
-		//
-		//		list.addBeforeValue(3, 0);
-		//		list.printList();
-		//		list.addBeforeValue(30, 99);
-		//		list.printList();
-		//
-		//		list.deleteList();
-		//		list.printList();
-		//
-		//		for (int i = 0; i < 10; i++) {
-		//			list.addToBack(10);
-		//		}
-		//		list.printList();
+		// Liste med flere elementer
+		list1.addToBack(1);
+		list1.addToBack(2);
+		list1.addToBack(3);
+		list1.addToBack(4);
+		System.out.print("Liste med fire elementer: ");
+		list1.removeFromFront();
+		System.out.println();
 
-		//		list.addAfterValue(3, 100);
-		//		System.out.println("Legg til 100 etter verdien 3:");
-		//		list.printList();
+		test(list1.isEmpty(), true, "");
 
-		//		System.out.println("Slett node med verdien 9:");
-		//		list.removeNodeWithValue(9);
-		//		list.printList();
+		// 2: Legg til element i slutten av listen
 
-		//		System.out.println("Slett noder med verdien 3:");
-		//		list.removeNodeWithValue(3);
-		//		list.printList();
+		// 3: Slett et element i slutten av listen
 
-		// System.out.println("Slett bakerste node:");
-		// list.removeFromBack();
-		list.printList();
+		// 4: Slett et element med oppgitt verdi
+
+		// 5: Legg til et element etter et element med oppgitt verdi
+
+		// 6: Legg til et element foran et element med oppgitt verdi
+
+		// 7: Skriv ut lengden på listen
+
+		// 8: Skriv ut antall forekomster av elementer med oppgitt verdi
+
+		// 9: Skriv ut hele listen
+
+		// 10: Slett listen og vis antall slettede elementer
 	}
 
 	/**
-	 * @param test -- Hvilken test som skal kjøres?
-	 * @param expected -- Hva forventes det at testen skal gi?
-	 * @param message -- Printe en melding for å identifisere hvilken test det er
-	 * snakk om
+	 * @param test -- Metode som testest
+	 * @param expected -- Forventet resultat?
+	 * @param message -- Print melding som forklarer hva som er testet
 	 */
 	public static void test(boolean test, boolean expected, String message) {
 		if (test == expected) {
-			// System.out.printf("Tester %s: %b OK!\n", message, expected);
-			// System.out.println();
+			System.out.printf("Tester %s: %b OK!\n", message, expected);
+			System.out.println();
 		} else {
 			System.out.printf("Tester %s: F#*k...! Forventet %b, fikk %b. TEST FAILED!\n", message, expected, test);
 			System.out.println();
