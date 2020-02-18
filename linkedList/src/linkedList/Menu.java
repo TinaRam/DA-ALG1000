@@ -86,7 +86,7 @@ public class Menu {
 				break;
 			// 8: Skriv ut antall forekomster av elementer med oppgitt verdi
 			case 8:
-				if (list.isEmpty()) {
+				if (list.head == null) {
 					System.out.println("Lista er tom... \n");
 				} else {
 					list.printInstancesOfValue(in.readInt("Vis antall elementer med verdi: "));

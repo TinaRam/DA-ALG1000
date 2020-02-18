@@ -7,7 +7,7 @@ package linkedList;
  * 
  * Se: http://folk.uio.no/krihus/inf1010/v16/enhetstesting_doc.html
  */
-public class Tester {
+public class TestLinkedList {
 
 	/**
 	 * @param args
@@ -41,8 +41,6 @@ public class Tester {
 		list1.removeFromFront();
 		System.out.println();
 
-		test(list1.isEmpty(), true, "");
-
 		// 2: Legg til element i slutten av listen
 
 		// 3: Slett et element i slutten av listen
@@ -60,6 +58,8 @@ public class Tester {
 		// 9: Skriv ut hele listen
 
 		// 10: Slett listen og vis antall slettede elementer
+
+		test(list1.head == null, true, "");
 	}
 
 	/**
