@@ -26,4 +26,8 @@ public class Node {
 	public void printNodeData() {
 		System.out.print(" [ " + data + " ] ");
 	}
+
+	public String toString() {
+		return " [ " + data + " ] ";
+	}
 }

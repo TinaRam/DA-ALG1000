@@ -3,6 +3,9 @@ package stack;
 /**
  * @author tinarambo
  *
+ * LIFO - Last In First Out
+ * Insert on top
+ * Remove from top
  */
 public class Stack {
 
@@ -14,8 +17,7 @@ public class Stack {
 
 	// Setter inn node på toppen av stabelen
 	public void push(int value) {
-		Node newNode = new Node(value, stackTop); // ny node med verdien 'value' og next = stackTop
-		stackTop = newNode;
+		stackTop = new Node(value, stackTop);
 	}
 
 	// Sletter noden på toppen av stabelen

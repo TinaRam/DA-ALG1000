@@ -22,6 +22,11 @@ public class Main {
 		stabel2.push(3);
 		stabel2.push(2);
 		stabel2.printStack();
+		System.out.println();
+
+		stabel1.printStack();
+		stabel1.pop();
+		stabel1.printStack();
 	}
 
 }
