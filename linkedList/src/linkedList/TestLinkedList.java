@@ -14,8 +14,6 @@ public class TestLinkedList {
 	 */
 	public static void main(String[] args) {
 
-		// # ENDRE TESTKLASSE TIL Å KJØRE ALLE PLANLAGTE TESTER MED UTSKRIFT FOR HVER TEST!
-
 		// 1: Slett element først i listen
 		LinkedList list = new LinkedList();
 		System.out.println("****** START TEST 1 - Slett element først i listen: ******\n");
@@ -319,6 +317,8 @@ public class TestLinkedList {
 	 * @param test -- Metode som testes
 	 * @param expected -- Forventet resultat?
 	 * @param message -- Print melding som forklarer hva som er testet
+	 * 
+	 * ex: test(list1.head == null, true, "test-metode");
 	 */
 	public static void test(boolean test, boolean expected, String message) {
 		if (test == expected) {
